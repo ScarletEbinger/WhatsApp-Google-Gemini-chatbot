@@ -1,0 +1,22 @@
+{
+  "name": "wa-chatbot",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "a whatsapp chatbot with google gemini",
+  "main": "dist/index.cjs",
+  "scripts": {
+    "setup": "npx tsc;mv dist/index.js dist/index.cjs",
+    "start": "node dist/index.cjs"
+  },
+  "author": "Scarlet Ebinger",
+  "license": "ISC",
+  "dependencies": {
+    "@google/generative-ai": "^0.2.1",
+    "@whiskeysockets/baileys": "^6.6.0",
+    "express": "^4.18.2",
+    "qrcode-terminal": "^0.12.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}
