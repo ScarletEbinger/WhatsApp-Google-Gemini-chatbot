@@ -48,11 +48,12 @@ async function connectToWhatsapp(){
             const prompt = ('user: ' + messageOne?.slice(5) + messageTwo?.slice(5)) 
             const result = await model.generateContent(prompt);
             const response = await result.response;
-            if (response.text() === null) {
-                console.log('not responded due to safety issues');
-            }else {
+            try{
             const text = ('Google Gemini: \n' + response.text())
-            await sock.sendMessage(id, { text: text});
+            await sock.sendMessage(id, { text: text}, { quoted: m.messages[0]});
+        }catch(error){
+            console.error('security violation', error);
+                await sock.sendMessage(id, {text: 'não foi possivel responder devido a politicas de segurança da Google!'}, {quoted: m.messages[0]});
         }}}
  }})
 
